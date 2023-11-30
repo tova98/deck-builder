@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row my-3 py-5 px-2">
+    <div class="col-lg-12">
+      <form (ngSubmit)="onSubmit()" [formGroup]="userForm">
+        <h1 *ngIf="isAddMode">Add User</h1>
+        <h1 *ngIf="!isAddMode">Edit User</h1>
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username">
+          <mat-hint>Enter username:</mat-hint>
+          <mat-error>Username is required!</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+          <mat-hint>Enter e-mail:</mat-hint>
+          <mat-error>Email must be in correct format!</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field *ngIf="isAddMode" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-hint>Enter password:</mat-hint>
+          <mat-error>Password is required!</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" *ngIf="authService.isLoggedInAdmin()">
+          <mat-label>Role</mat-label>
+          <mat-select matSelect formControlName="role">
+            <mat-option [value]="role" *ngFor="let role of roles"> {{ role }}</mat-option>
+          </mat-select>
+          <mat-hint>Select a role:</mat-hint>
+          <mat-error>Role is required!</mat-error>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button type="submit" [disabled]="!userForm.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

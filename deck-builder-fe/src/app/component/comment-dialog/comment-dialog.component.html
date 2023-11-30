@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Write a comment</h2>
+<mat-dialog-content>
+    <form [formGroup]="commentForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Comment</mat-label>
+            <input type="text" matInput formControlName="text">
+            <mat-hint>Type comment:</mat-hint>
+            <mat-error>Comment is required!</mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button class="mat-raised-button mr-2" mat-dialog-close>Close</button>
+    <button class="mat-raised-button mat-warn"(click)="comment()"  [disabled]="!commentForm.valid">Submit</button>
+</mat-dialog-actions>

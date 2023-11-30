@@ -1,0 +1,49 @@
+<div class="container" *ngIf="deck.id">
+    <div class="row ad-row my-3">
+        <div class="col-12 bg-image">
+            <img #preview class="ad-image" [src]="(deck.cards[0].card_images[0].image_url) | safe">
+        </div>
+        <div class="col-12 p-4">
+            <div class="d-flex flex-row">
+                <h3 class="text-primary push-btns-right">{{ deck.title }}</h3>
+                <button *ngIf="canManage()" class="btn btn-primary custom-btn" [routerLink]="['/edit-deck', deck.id]"><fa-icon [icon]="faPen"></fa-icon></button>
+                <button *ngIf="canManage()" class="btn btn-danger custom-btn ml-2" (click)="delete(deck.id)"><fa-icon [icon]="faTrashCan"></fa-icon></button>
+            </div>
+        </div>
+    </div>
+    <div class="row ad-row my-3 px-2 py-4">
+        <div class="col-12">
+            <h3>Description</h3>
+            <p style="white-space: pre-line">{{ deck.description }}</p>
+        </div>
+    </div>
+    <div class="row ad-row my-3 px-2 py-4">
+        <div class="col-12">
+            <h3>Creator info</h3>
+            <h5>username: {{ deck.user.username }}</h5>
+            <h5>email: {{ deck.user.email }}</h5>
+        </div>
+    </div>
+    <div class="row ad-row my-3 px-2 py-4">
+        <div class="col-12">
+            <mat-grid-list cols="4">
+                <mat-grid-tile *ngFor="let card of deck.cards">
+                    <img class="tile-image" [src]="(card.card_images[0].image_url_small) | safe">
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </div>
+    <div class="row ad-row my-3 px-2 py-4">
+        <div class="col-12">
+            <h3>Comments</h3>
+            <button *ngIf="this.authService.isLoggedIn()" class="btn btn-primary" (click)="createComment()"><fa-icon [icon]="faPen"></fa-icon> Add Comment</button>
+            <br><br>
+            <ul class="list-group list-group-flush make-compact">
+                <li class="list-group-item" *ngFor="let comment of deck.comments">
+                    {{ comment.timestamp }} <b>{{ comment.user.username }}</b>: {{ comment.text }}
+                    <button *ngIf="canManageComment(comment)" class="btn btn-danger custom-btn ml-2" (click)="deleteComment(comment.id)"><fa-icon [icon]="faTrashCan"></fa-icon></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

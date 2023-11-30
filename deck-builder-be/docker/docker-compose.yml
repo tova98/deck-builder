@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: deck-builder
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: deckbuilder
+      POSTGRES_PASSWORD: DeckBuilder!12
+      POSTGRES_DB: deck-builder
+    ports:
+      - "5432:5432"

@@ -1,0 +1,75 @@
+.pos-relative {
+    position: relative;
+}
+
+.ad-title {
+    margin-right: -20%;
+}
+
+.ad-title:hover {
+    text-decoration: none !important; 
+}
+
+.ad-price {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.ad-image {
+    width: 100%;
+    height: 250px;
+    object-fit: scale-down;
+    cursor: pointer;
+}
+
+.bg-image {
+    border-radius: 10px 0px 0px 10px;
+    background-color: rgba(97, 97, 97, 0.164);
+}
+
+.bg-image-none {
+    background-color: transparent;
+}
+
+.custom-btn {
+    width: 42px;
+}
+
+.mat-paginator {
+    margin: 0 auto;
+}
+
+#expiredCheckbox .mat-checkbox {
+    color: rgba(0,0,0,.6);
+}
+
+::ng-deep #expiredCheckbox .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+    padding: 0.4em !important;
+}
+
+@media(max-width: 992px) {
+    mat-form-field {
+        width: 100%;
+    }
+
+    .form-col {
+        width: 100%;
+    }
+
+    .custom-btn {
+        margin-bottom: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+@media(max-width: 767px) {
+    .bg-image {
+        border-radius: 10px 10px 0px 0px;
+    }
+
+    .custom-btn {
+        margin-bottom: 1rem !important;
+        margin-right: 0.5rem !important;
+    }
+}

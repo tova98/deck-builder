@@ -1,0 +1,18 @@
+.profile-picture {
+    background-color: grey;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;  
+}
+
+.custom-btn {
+    
+    height: 38px;
+}
+
+@media(max-width: 991px) {
+    #btn-container {
+        margin-top: 2em;
+        float: left !important;
+    }
+}

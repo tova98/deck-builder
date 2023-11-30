@@ -1,0 +1,49 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button id="sidebarButton">
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1 id="title" class="px-3 pointer" [routerLink]="'/decks'">{{ title }}</h1>
+    <div class="spacer"></div>
+    <div id="toolbarItems">
+      <a *ngIf="this.authService.isLoggedIn()" mat-button routerLinkActive="mat-btn-active" [routerLink]="'/profile'"> Profile </a>
+      <a *ngIf="this.authService.isLoggedIn()" mat-button routerLinkActive="mat-btn-active" [routerLink]="'/add-deck'"> Create Deck </a>
+      <a mat-button routerLinkActive="mat-btn-active" [routerLink]="'/decks'"> Decks </a>
+      <a *ngIf="this.authService.isLoggedIn()" mat-button routerLinkActive="mat-btn-active" [routerLink]="'/decks-user'"> My Decks </a>
+      
+      <div class="admin-dropdown" *ngIf="this.authService.isLoggedInAdmin()">
+        <button mat-button>Admin Options <fa-icon class="ml-1 pr-0 mr-0" [icon]="faCaretDown"></fa-icon></button>
+        <div class="admin-options">
+          <a mat-button [routerLink]="'/users'"> Users </a>
+          <a mat-button [routerLink]="'/add-user'"> Add User </a>
+        </div>
+      </div>
+      
+      <a *ngIf="this.authService.isLoggedIn()" mat-button routerLinkActive="mat-btn-active" (click)="logout()"> Logout </a>
+      <a *ngIf="!this.authService.isLoggedIn()" mat-button routerLinkActive="mat-btn-active" [routerLink]="'/login'"> Login </a>
+      <a *ngIf="!this.authService.isLoggedIn()" mat-button routerLinkActive="mat-btn-active" [routerLink]="'/register'"> Register </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav>
+    <mat-nav-list>
+      <a *ngIf="this.authService.isLoggedIn()" mat-list-item [routerLink]="'/profile'"> Profile </a>
+      <a *ngIf="this.authService.isLoggedIn()" mat-list-item [routerLink]="'/add-deck'"> Create Deck </a>
+      <a mat-list-item [routerLink]="'/decks'"> Decks </a>
+      <a *ngIf="this.authService.isLoggedIn()" mat-list-item [routerLink]="'/decks-user'"> My Decks </a>
+      <div *ngIf="this.authService.isLoggedInAdmin()">
+        <hr>
+        <a mat-list-item [routerLink]="'/users'"> Users </a>
+        <a mat-list-item [routerLink]="'/add-user'"> Add user </a>
+      </div>
+      <hr>
+      <a *ngIf="this.authService.isLoggedIn()" mat-list-item (click)="logout()"> Logout </a>
+      <a *ngIf="!this.authService.isLoggedIn()" mat-list-item [routerLink]="'/login'"> Login </a>
+      <a *ngIf="!this.authService.isLoggedIn()" mat-list-item [routerLink]="'/register'"> Register </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

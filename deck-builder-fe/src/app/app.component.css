@@ -1,0 +1,81 @@
+mat-sidenav-content {
+    height: calc(100vh - 65px);
+}
+
+mat-toolbar {
+    height: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#sidebarButton {
+    outline: none;
+}
+
+.mat-sidenav {
+    width: 30%;
+}
+
+.mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.mat-button {
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+.mat-button:hover {
+    background-color: #0000003d;
+}
+
+.mat-btn-active {
+    background-color: #0000003d !important;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+#toolbarItems a {
+    margin: 0px 2px;
+}
+
+.admin-dropdown {
+    display: inline-block;
+}
+
+.admin-options {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.admin-options a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.admin-dropdown:hover .admin-options {
+    display: block;
+}
+
+@media(min-width: 800px) {
+    #sidebarButton {
+        display: none !important;
+    }
+}
+
+@media(max-width: 799px) {
+    #toolbarItems {
+        display: none;
+    }
+}

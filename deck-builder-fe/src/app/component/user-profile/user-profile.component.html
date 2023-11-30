@@ -1,0 +1,11 @@
+<div class="container" *ngIf="user.id">
+    <div class="row my-3 py-5 px-5">
+        <div class="col-lg-6">
+            <h1>Profile</h1>
+            <h3 class="pt-4">Username: {{ user.username }}</h3>
+            <h3>Email: {{ user.email }}</h3>
+            <h3>Join date: {{ user.joinDate }}</h3>
+            <button class="btn btn-info custom-btn mr-3" (click)="changePassword()"><fa-icon [icon]="faKey"></fa-icon> Change Password</button>
+        </div>
+    </div>
+</div>

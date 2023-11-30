@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/deck-builder
+    username: deckbuilder
+    password: DeckBuilder!12
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update

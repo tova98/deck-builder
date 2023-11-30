@@ -1,0 +1,12 @@
+.no-min-width {
+    min-width: 0px;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.make-compact {
+    overflow: auto;
+    height: 230px;
+}

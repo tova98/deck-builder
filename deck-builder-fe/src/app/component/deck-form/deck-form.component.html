@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row my-3 py-5 px-2">
+    <div class="col-lg-12">
+      <form (ngSubmit)="onSubmit()" [formGroup]="deckForm">
+        <h1 *ngIf="isAddMode">New Deck</h1>
+        <h1 *ngIf="!isAddMode">Edit Deck</h1>
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input matInput formControlName="title">
+          <mat-hint>Enter deck title:</mat-hint>
+          <mat-error>Deck title is required!</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea rows="5" mat-line matInput formControlName="description"></textarea>
+          <mat-hint>Enter deck description:</mat-hint>
+          <mat-error>Deck description is required!</mat-error>
+        </mat-form-field>
+        <br>
+        
+        <br>
+        <div class="form-group">
+          <label for="search-text">Search Cards</label>
+          <input class="form-control" id="search-text" aria-describedby="search-text" 
+            [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" placeholder="Enter text to search" 
+            autofocus>
+        </div>
+        <ul class="list-group list-group-flush make-compact">
+          <li class="list-group-item" *ngFor="let card of cards | appFilter: searchText" (click)="addCard(card)">
+            {{ card.name }}
+          </li>
+        </ul>
+        <br>
+        <button mat-raised-button type="submit" [disabled]="!deckForm.valid">Submit</button>
+      </form>
+      <br>
+      <mat-grid-list cols="4">
+        <mat-grid-tile *ngFor="let card of selectedCards">
+            <img class="tile-image" (click)="removeCard(card)" [src]="(card.card_images[0].image_url_small) | safe">
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>

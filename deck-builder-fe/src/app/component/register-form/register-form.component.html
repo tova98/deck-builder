@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row my-3 py-5 px-2">
+    <div class="col-lg-12">
+      <form (ngSubmit)="onSubmit()" [formGroup]="registerForm">
+        <h1>Register</h1>
+        <mat-form-field appearance="outline">
+          <mat-label>Username</mat-label>
+          <input matInput formControlName="username">
+          <mat-hint>Enter your username:</mat-hint>
+          <mat-error>Username is required!</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+          <mat-hint>Enter your e-mail:</mat-hint>
+          <mat-error>Email must be in correct format!</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput formControlName="password">
+          <mat-hint>Enter your password:</mat-hint>
+          <mat-error>Password is required!</mat-error>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button type="submit" [disabled]="!registerForm.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
